@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html style="overflow: hidden;">
+<head>
+    <!-- <script src="../Resources/Apis/Proxy.js" cwidget="CalenderWidget"></script> -->
+    <title>CalenderWidget</title>
+</head>
+<body>
+	<!-- <div class="clock">
+		<div class="number number1">
+			<input type="checkbox" id="number1" class="timeInput" value="1">
+			<div id="number1"></div>
+		</div>
+		<div class="number number2">
+			<input class="timeInput" type="checkbox" id="number2" onclick="getTime()" value="2">
+		</div>
+		<div class="number number3">3</div>
+		<div class="number number4">4</div>
+		<div class="number number5">5</div>
+		<div class="number number6">6</div>
+		<div class="number number7">7</div>
+		<div class="number number8">8</div>
+		<div class="number number9">9</div>
+		<div class="number number10">10</div>
+		<div class="number number11">11</div>
+		<div class="number number12">12</div>
+
+	</div> -->
+
+
+	<div class="clock">
+		<div class="clockParts">
+			<div class="pos-center">
+				<button value="12" onclick="getTime(12)">12</button>
+			</div>
+			<div class="pos-second">
+				<button onclick="getTime(11)">11</button>
+				<button onclick="getTime(1)">1</button>
+			</div>
+			<div class="pos-third">
+				<button onclick="getTime(10)">10</button>
+				<button onclick="getTime(2)">2</button>
+			</div>
+			<div class="pos-fourth">
+				<button onclick="getTime(9)">9</button>
+				<button onclick="getTime(3)">3</button>
+			</div>
+			<div class="pos-third">
+				<button onclick="getTime(8)">8</button>
+				<button onclick="getTime(4)">4</button>
+			</div>
+			<div class="pos-second">
+				<button onclick="getTime(7)">7</button>
+				<button onclick="getTime(5)">5</button>
+			</div>
+			<div class="pos-center">
+				<button value="11" onclick="getTime(6)">6</button>
+			</div>
+		</div>
+	</div>
+	
+	<label class="switch" for="checkbox">
+		<input type="checkbox" name="checkbox" id="checkbox" onclick="dayChange()">
+		<span class="slider round"></span>
+	</label>
+	<div class="timeOutcome">Time selected goes here</div>
+	   
+	<style>
+		body{
+			width:600px;
+			height:600px;
+			border:green solid 1px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-evenly;
+			align-items: center;
+		}
+		.clock{
+			border:red solid 1px;
+			width:250px;
+			height:250px;
+			border-radius: 150px;
+			position: relative;
+		}
+		.clockParts{
+			height:100%;
+			width:100%;
+			position: absolute;
+			border: red solid 1px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		/* .clockParts>div{
+			height:14%;
+		} */
+		button{
+			border-radius: 15px;
+			border:none;
+			background:none;
+			font-size: 25px;
+		}
+		.pos-center{
+			display: flex;
+			justify-content: center;
+			position: relative;
+		}
+		.pos-second{
+			display: flex;
+			justify-content: space-between;
+			width:65%;
+		}
+		.pos-third{
+			display: flex;
+			justify-content: space-between;
+			width: 80%;
+		}
+		.pos-fourth{
+			display: flex;
+			justify-content: space-between;
+			width: 95%;
+		}
+
+
+
+
+		
+
+		/* .box1{
+			border:blue solid 1px;
+			position: absolute;
+			text-align: center;
+			display: flex;
+			justify-content: center;
+			width: 100%;
+		} */
+		/* Clock Styling */
+		/* *, *::after, *::before {
+  		box-sizing: border-box;
+		}
+		.clock {
+		width: 200px;
+		height: 200px;
+		background-color: rgba(255, 255, 255, .8);
+		border-radius: 50%;
+		border: 2px solid black;
+		position: relative;
+		}
+		
+		.number{
+			z-index: -1;
+		--rotation: 0;
+		position: absolute;
+		color:blue;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		transform: rotate(var(--rotation));
+		font-size: 1.5rem;
+		
+		}
+		.number1{
+			color:green;
+			width: 100px;
+			z-index: 100;
+		}
+	
+		.clock .number1 { --rotation: 30deg; }
+		.clock .number2 { --rotation: 60deg; }
+		.clock .number3 { --rotation: 90deg; }
+		.clock .number4 { --rotation: 120deg; }
+		.clock .number5 { --rotation: 150deg; }
+		.clock .number6 { --rotation: 180deg; }
+		.clock .number7 { --rotation: 210deg; }
+		.clock .number8 { --rotation: 240deg; }
+		.clock .number9 { --rotation: 270deg; }
+		.clock .number10 { --rotation: 300deg; }
+		.clock .number11 { --rotation: 330deg; } */
+
+	
+
+
+		/* Slider styling */
+		.switch {
+		position: relative;
+		display: inline-block;
+		width: 60px;
+		height: 34px;
+		}
+		#checkbox { 
+		opacity: 0;
+		width: 0;
+		height: 0;
+		}
+		.slider {
+		position: absolute;
+		cursor: pointer;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: #fde163;
+		-webkit-transition: .4s;
+		transition: .4s;
+		}
+		.slider:before {
+		position: absolute;
+		content: "";
+		height: 26px;
+		width: 26px;
+		left: 4px;
+		bottom: 4px;
+		background-color: rgb(255, 255, 255);
+		border: black 1px solid;
+		-webkit-transition: .4s;
+		transition: .4s;
+		}
+		#checkbox:checked + .slider {
+		background-color: #1b2630;
+		}
+		#checkbox:focus + .slider {
+		box-shadow: 0 0 1px #2196F3;
+		}
+		#checkbox:checked + .slider:before {
+		-webkit-transform: translateX(26px);
+		-ms-transform: translateX(26px);
+		transform: translateX(26px);
+		}
+		/* Rounded sliders */
+		.slider.round {
+		border-radius: 34px;
+		}
+		.slider.round:before {
+		border-radius: 50%;
+		}
+
+
+
+	</style>
+    <script src="./custom_widget.js"></script>
+
+</body>
+</html>
